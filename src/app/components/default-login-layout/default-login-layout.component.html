@@ -1,6 +1,6 @@
 <main>
-    <section>
-        <h1>Login</h1>
+    <section class="form-section">
+        <h2>{{ title }}</h2>
         <p>Faça login para acessar sua conta.</p>
         <form>
             <div>
@@ -11,14 +11,19 @@
                 <label for="password">Senha:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Entrar</button>
-            <div>
-                <span>ou</span>
+            <div class="btn-wrapper">
+                <button class="primary-btn" type="submit">{{ primaryButtonText }}</button>
+                <div class="divider">
+                    <div></div>
+                    <span>ou</span>
+                    <div></div>
+                </div>
+                <button class="secondary-btn">{{ secondaryButtonText }}</button>
             </div>
-            <button></button>
         </form>
     </section>
-    <section>
+    <section class="main-section">
         <img src="/assets/svg/logo.svg"/>
+        <h1>Iluminando ideias, conectando o futuro.</h1>
     </section>
 </main>
