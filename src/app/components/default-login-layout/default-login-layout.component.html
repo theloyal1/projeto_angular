@@ -2,20 +2,19 @@
     <section class="form-section">
         <h2>{{ title }}</h2>
         <ng-content></ng-content>
-        <form>
-            <div class="btn-wrapper">
-                <button class="primary-btn" (click)="submit()" [disabled]="disablePrimaryBtn">{{ primaryButtonText }}</button>
-                <div class="divider">
-                    <div></div>
-                    <span>ou</span>
-                    <div></div>
-                </div>
-                <button class="secondary-btn" (click)="navigate()">{{ secondaryButtonText }}</button>
+        <div class="btn-wrapper">
+            <button type="button" class="primary-btn" (click)="submit()" [disabled]="disablePrimaryBtn">{{
+                primaryButtonText }}</button>
+            <div class="divider">
+                <div></div>
+                <span>ou</span>
+                <div></div>
             </div>
-        </form>
+            <button type="button" class="secondary-btn" (click)="navigate()">{{ secondaryButtonText }}</button>
+        </div>
     </section>
     <section class="main-section">
-        <img src="/assets/svg/logo.svg"/>
+        <img src="/assets/svg/logo.svg" />
         <h1>Iluminando ideias, conectando o futuro.</h1>
     </section>
 </main>

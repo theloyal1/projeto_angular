@@ -28,9 +28,23 @@ export class SignupComponent {
   }
 
   submit() {
+    if (this.signupForm.value.password !== this.signupForm.value.confirmPassword) {
+      this.toastService.error('As senhas não coincidem');
+      return;
+    }
+
     this.loginService.signup(this.signupForm.value.name, this.signupForm.value.email, this.signupForm.value.password).subscribe({
-      next: () => this.toastService.success('Cadastro realizado com sucesso!'),
-      error: (err: HttpErrorResponse) => this.toastService.error('Erro ao realizar cadastro: ' + err.message)
+      next: () => {
+        this.toastService.success('Cadastro realizado com sucesso!');
+        this.router.navigate(['/login']);
+      },
+      error: (error: HttpErrorResponse) => {
+        if (error.status === 409) {
+          this.toastService.error('Email já cadastrado. Tente outro email ou faça login.');
+        } else {
+          this.toastService.error('Ocorreu um erro durante o cadastro. Tente novamente mais tarde.');
+        }
+      }
     });
   }
 
