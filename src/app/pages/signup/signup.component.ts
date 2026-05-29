@@ -8,32 +8,33 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-signup',
   standalone: true,
   imports: [DefaultLoginLayoutComponent, ReactiveFormsModule, PrimaryInputComponent],
-  providers: [LoginService],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.scss'
 })
-export class LoginComponent {
-  loginForm!: FormGroup;
+export class SignupComponent {
+  signupForm!: FormGroup;
 
   constructor(private router: Router, private loginService: LoginService, private toastService: ToastrService) {
-    this.loginForm = new FormGroup({
+    this.signupForm = new FormGroup({
       // Defina os controles do formulário aqui, por exemplo:
+      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)])
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
   }
 
   submit() {
-    this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
-      next: () => this.toastService.success('Login realizado com sucesso!'),
-      error: (err: HttpErrorResponse) => this.toastService.error('Erro ao realizar login: ' + err.message)
+    this.loginService.signup(this.signupForm.value.name, this.signupForm.value.email, this.signupForm.value.password).subscribe({
+      next: () => this.toastService.success('Cadastro realizado com sucesso!'),
+      error: (err: HttpErrorResponse) => this.toastService.error('Erro ao realizar cadastro: ' + err.message)
     });
   }
 
   navigate() {
-    this.router.navigate(['/cadastro']);
+    this.router.navigate(['/login']);
   }
 }

@@ -18,4 +18,8 @@ export class LoginService {
       })
     );
   }
+
+  signup(name: string, email: string, password: string) {
+    return this.httpClient.post('/signup', { name, email, password });
+  }
 }
