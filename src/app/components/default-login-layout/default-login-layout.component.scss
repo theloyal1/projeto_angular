@@ -31,7 +31,6 @@ section {
     padding: 0 35px;
 }
 
-
 img {
     margin-bottom: 30px;
 }
@@ -51,6 +50,10 @@ button {
     background: transparent;
     padding: 12px 24px;
     cursor: pointer;
+
+    &:disabled {
+        opacity: 0.8;
+    }
 }
 
 .primary-btn {

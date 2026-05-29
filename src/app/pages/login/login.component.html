@@ -2,6 +2,9 @@
     title="Login"
     primaryButtonText="Entrar"
     secondaryButtonText="Registrar-se"
+    (submit)="submit()"
+    (navigate)="navigate()"
+    [disablePrimaryBtn]="!loginForm.valid"
 >
     <form [formGroup]="loginForm">
         <app-primary-input
@@ -20,5 +23,6 @@
         label="Senha">
             <img src="/assets/svg/password-icon.svg"/>
         </app-primary-input>
+        <span>Esqueceu a senha?</span>
     </form>
 </app-default-login-layout>
